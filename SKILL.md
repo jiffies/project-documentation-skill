@@ -141,6 +141,7 @@ Before finalizing documentation:
 - **[mermaid-patterns.md](references/mermaid-patterns.md)** - Flowchart design patterns and templates
 - **[step-by-step-guide.md](references/step-by-step-guide.md)** - Step-by-step instruction writing guide
 - **[config-organization.md](references/config-organization.md)** - Configuration documentation organization guide
+- **[complete-example.md](examples/complete-example.md)** - Complete documentation example with all three diagram types
 
 ## Best Practices
 
