@@ -124,26 +124,26 @@ Shows the complete tech stack and dependencies between layers.
 
 ```mermaid
 graph LR
-    subgraph FrontendLayer[Frontend Layer]
+    subgraph "Frontend Layer"
         WebApp[React + TypeScript<br/>Vite Build Tool]
         StateLib[Zustand State<br/>React Query Cache]
         UIKit[Ant Design<br/>Component Library]
     end
 
-    subgraph BackendLayer[Backend Layer]
+    subgraph "Backend Layer"
         Gateway[API Gateway<br/>Express.js + JWT]
         TaskSvc[Task Service<br/>Business Logic]
         AuthSvc[Auth Service<br/>User Management]
         NotifySvc[Notification Service<br/>WebSocket Server]
     end
 
-    subgraph DataLayer[Data Layer]
+    subgraph "Data Layer"
         MainDB[(PostgreSQL<br/>Primary Database)]
         Prisma[Prisma ORM<br/>Type-safe Queries]
         RedisCache[(Redis<br/>Session Cache)]
     end
 
-    subgraph ExternalServices[External Services]
+    subgraph "External Services"
         GoogleCal[Google Calendar API<br/>Event Sync]
         SendGrid[SendGrid<br/>Email Notifications]
         Sentry[Sentry<br/>Error Tracking]
@@ -177,31 +177,6 @@ graph LR
 - Specific technology choices labeled
 - Dependency flow from top to bottom
 - Color coding for different layer types
-
----
-
-## GitHub Compatibility Notes
-
-### Common Rendering Issues
-
-**Problem**: `Could not find a suitable point for the given distance`
-
-**Cause**: Using `subgraph "Name"` syntax with quotes
-
-**Solution**: Use `subgraph ID[Name]` syntax instead
-
-```diff
-- subgraph "Frontend Layer"
-+ subgraph FrontendLayer[Frontend Layer]
-```
-
-### Best Practices for GitHub
-
-1. **Avoid quoted subgraph names** - Use ID-based syntax
-2. **Keep diagrams under 20 nodes** - Split complex diagrams
-3. **Test locally first** - Use Mermaid Live Editor
-4. **Use standard shapes** - Stick to documented node types
-5. **Limit nesting depth** - Avoid deeply nested subgraphs
 
 ---
 

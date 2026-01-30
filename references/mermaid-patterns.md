@@ -117,26 +117,26 @@ Show system tech stack and dependencies between layers, helping understand overa
 
 ```mermaid
 graph LR
-    subgraph FrontendLayer[Frontend Layer]
+    subgraph "Frontend Layer"
         Web[React + Vite]
         UI[UI Component Library]
         State[State Management]
     end
 
-    subgraph BackendLayer[Backend Layer]
+    subgraph "Backend Layer"
         API[API Server<br/>Framework Name]
         Service1[Service 1<br/>Function Description]
         Service2[Service 2<br/>Function Description]
         Scheduler[Scheduled Tasks<br/>Tool Name]
     end
 
-    subgraph DataLayer[Data Layer]
+    subgraph "Data Layer"
         DB[(Database<br/>Type)]
         ORM[ORM Tool]
         Cache[(Cache<br/>Type)]
     end
 
-    subgraph ExternalServices[External Services]
+    subgraph "External Services"
         External1[External Service 1]
         External2[External Service 2]
     end
@@ -163,7 +163,7 @@ graph LR
 ```
 
 ### Key Elements
-- `subgraph ID[Name]`: Define grouping (use ID without quotes for better GitHub compatibility)
+- `subgraph "Name"`: Define grouping
 - `[Text<br/>Newline]`: Line break within node
 - `[(Text)]`: Cylinder shape (database)
 - `-->`: Dependency arrow
