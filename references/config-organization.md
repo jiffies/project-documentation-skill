@@ -1,90 +1,90 @@
-# 配置说明组织指南
+# Configuration Documentation Organization Guide
 
-## 核心原则
+## Core Principles
 
-### 1. 分层组织
-将配置项按照重要性和功能分组：
-- **必需配置项**: 系统无法运行的配置
-- **推荐配置项**: 影响核心功能的配置
-- **可选配置项**: 增强功能的配置
+### 1. Hierarchical Organization
+Organize configuration items by importance and functionality:
+- **Required Configuration Items**: Configuration needed for the system to run
+- **Recommended Configuration Items**: Configuration affecting core functionality
+- **Optional Configuration Items**: Configuration for enhanced features
 
-### 2. 清晰标注
-为每个配置项提供：
-- 配置项名称
-- 用途说明
-- 示例值
-- 获取方式（如果需要外部服务）
-- 默认值（如果有）
+### 2. Clear Labeling
+Provide for each configuration item:
+- Configuration item name
+- Purpose description
+- Example value
+- How to obtain it (if external service is needed)
+- Default value (if applicable)
 
-### 3. 多方案对比
-当有多种配置方案时，提供对比表格帮助用户选择。
+### 3. Multi-Option Comparison
+When multiple configuration options exist, provide comparison tables to help users choose.
 
 ---
 
-## 配置文件结构
+## Configuration File Structure
 
-### 推荐的 .env.example 结构
+### Recommended .env.example Structure
 
 ```bash
 # ========================================
-# 分类标题（使用分隔线）
+# Category Title (using separator line)
 # ========================================
-配置项=示例值
+CONFIG_ITEM=example_value
 
 # ----------------------------------------
-# 子分类标题（使用短分隔线）
+# Subcategory Title (using short separator line)
 # ----------------------------------------
-配置项=示例值
+CONFIG_ITEM=example_value
 ```
 
-### 完整示例
+### Complete Example
 
 ```bash
 # ========================================
-# 服务器配置
+# Server Configuration
 # ========================================
 PORT=3000
 NODE_ENV=development
 
 # ========================================
-# 数据库配置
+# Database Configuration
 # ========================================
 DATABASE_PATH=./data/db.sqlite
 
 # ========================================
-# Telegram API 配置
+# Telegram API Configuration
 # ========================================
-# 从 https://my.telegram.org 获取
+# Obtain from https://my.telegram.org
 TELEGRAM_API_ID=your_api_id
 TELEGRAM_API_HASH=your_api_hash
 
 # ========================================
-# AI Provider 配置
+# AI Provider Configuration
 # ========================================
-# 可选值: mock (测试), openai, deepseek, gemini, custom
+# Optional values: mock (testing), openai, deepseek, gemini, custom
 AI_PROVIDER=mock
 
 # ----------------------------------------
-# OpenAI 兼容 API 配置（用于 openai/deepseek/custom）
+# OpenAI Compatible API Configuration (for openai/deepseek/custom)
 # ----------------------------------------
-# 需要同时配置 API Key、Base URL 和 Model
+# Must configure API Key, Base URL, and Model together
 AI_API_KEY=your_api_key
 AI_API_BASE_URL=https://api.deepseek.com/v1
 AI_MODEL=deepseek-chat
 
 # ----------------------------------------
-# Google Gemini 专用配置
+# Google Gemini Specific Configuration
 # ----------------------------------------
-# 获取 API Key: https://aistudio.google.com/app/apikey
-# 如果不配置 GEMINI_API_KEY，会回退使用 AI_API_KEY
+# Get API Key: https://aistudio.google.com/app/apikey
+# If GEMINI_API_KEY is not configured, will fall back to AI_API_KEY
 # AI_PROVIDER=gemini
 # GEMINI_API_KEY=your_gemini_api_key
 # AI_MODEL=gemini-2.5-flash
 
 # ========================================
-# Web Push 浏览器推送通知配置（可选）
+# Web Push Browser Notification Configuration (Optional)
 # ========================================
-# 生成 VAPID 密钥: cd apps/backend && pnpm exec web-push generate-vapid-keys --json
+# Generate VAPID keys: cd apps/backend && pnpm exec web-push generate-vapid-keys --json
 VAPID_PUBLIC_KEY=your_vapid_public_key
 VAPID_PRIVATE_KEY=your_vapid_private_key
 VAPID_SUBJECT=mailto:admin@example.com
@@ -92,55 +92,55 @@ VAPID_SUBJECT=mailto:admin@example.com
 
 ---
 
-## README 中的配置说明
+## Configuration Documentation in README
 
-### 模板 1: 必需配置项
+### Template 1: Required Configuration Items
 
 ```markdown
-#### 必需配置项
+#### Required Configuration Items
 
-以下配置项必须填写，否则系统无法启动：
+The following configuration items must be filled in, otherwise the system cannot start:
 
 ```bash
 # ========================================
-# Telegram API 配置（步骤 2 获取）
+# Telegram API Configuration (obtained in Step 2)
 # ========================================
-TELEGRAM_API_ID=12345678              # 替换为你的 api_id
-TELEGRAM_API_HASH=abcdef1234567890    # 替换为你的 api_hash
+TELEGRAM_API_ID=12345678              # Replace with your api_id
+TELEGRAM_API_HASH=abcdef1234567890    # Replace with your api_hash
 
 # ========================================
-# AI Provider 配置（步骤 3 获取）
+# AI Provider Configuration (obtained in Step 3)
 # ========================================
-AI_PROVIDER=deepseek                  # 可选: mock | openai | deepseek | gemini
-AI_API_KEY=sk-xxxxxxxxxxxxx           # 替换为你的 API Key
+AI_PROVIDER=deepseek                  # Options: mock | openai | deepseek | gemini
+AI_API_KEY=sk-xxxxxxxxxxxxx           # Replace with your API Key
 AI_API_BASE_URL=https://api.deepseek.com/v1
 AI_MODEL=deepseek-chat
 ```
 
-> ⚠️ **注意**: 所有 `your_*` 占位符都必须替换为实际值
+> ⚠️ **Note**: All `your_*` placeholders must be replaced with actual values
 ```
 
-### 模板 2: 多方案配置对比
+### Template 2: Multi-Option Configuration Comparison
 
 ```markdown
-### 步骤 3: 获取 AI API Key
+### Step 3: Get AI API Key
 
-选择以下任一 AI 服务商：
+Choose any one of the following AI service providers:
 
-| 服务商 | 性价比 | 速度 | 质量 | 推荐场景 |
-|--------|--------|------|------|----------|
-| Deepseek | ⭐⭐⭐⭐⭐ | 快 | 高 | 日常使用（推荐） |
-| OpenAI | ⭐⭐⭐ | 中 | 最高 | 高质量要求 |
-| Gemini | ⭐⭐⭐⭐ | 快 | 高 | 免费额度大 |
+| Provider | Cost-Effectiveness | Speed | Quality | Recommended Use Case |
+|----------|--------|------|------|----------|
+| Deepseek | ⭐⭐⭐⭐⭐ | Fast | High | Daily use (recommended) |
+| OpenAI | ⭐⭐⭐ | Medium | Highest | High quality requirements |
+| Gemini | ⭐⭐⭐⭐ | Fast | High | Large free quota |
 
-#### 方案 A: Deepseek（推荐，性价比高）
+#### Option A: Deepseek (Recommended, Best Value)
 
-1. 访问 [https://platform.deepseek.com](https://platform.deepseek.com)
-2. 注册并登录
-3. 创建 API Key
-4. 记录 API Key（格式：`sk-xxxxx`）
+1. Visit [https://platform.deepseek.com](https://platform.deepseek.com)
+2. Register and log in
+3. Create an API Key
+4. Record the API Key (format: `sk-xxxxx`)
 
-**配置示例**:
+**Configuration Example**:
 ```bash
 AI_PROVIDER=deepseek
 AI_API_KEY=sk-xxxxxxxxxxxxx
@@ -148,13 +148,13 @@ AI_API_BASE_URL=https://api.deepseek.com/v1
 AI_MODEL=deepseek-chat
 ```
 
-#### 方案 B: OpenAI
+#### Option B: OpenAI
 
-1. 访问 [https://platform.openai.com](https://platform.openai.com)
-2. 创建 API Key
-3. 记录 API Key
+1. Visit [https://platform.openai.com](https://platform.openai.com)
+2. Create an API Key
+3. Record the API Key
 
-**配置示例**:
+**Configuration Example**:
 ```bash
 AI_PROVIDER=openai
 AI_API_KEY=sk-xxxxxxxxxxxxx
@@ -162,13 +162,13 @@ AI_API_BASE_URL=https://api.openai.com/v1
 AI_MODEL=gpt-4o-mini
 ```
 
-#### 方案 C: Google Gemini
+#### Option C: Google Gemini
 
-1. 访问 [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
-2. 创建 API Key
-3. 记录 API Key
+1. Visit [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+2. Create an API Key
+3. Record the API Key
 
-**配置示例**:
+**Configuration Example**:
 ```bash
 AI_PROVIDER=gemini
 GEMINI_API_KEY=AIzaSyxxxxxxxxxxxxx
@@ -176,90 +176,90 @@ AI_MODEL=gemini-2.5-flash
 ```
 ```
 
-### 模板 3: 可选配置项
+### Template 3: Optional Configuration Items
 
 ```markdown
-#### 可选配置项（Web Push 浏览器推送通知）
+#### Optional Configuration Items (Web Push Browser Notifications)
 
-如果需要浏览器推送通知功能，配置以下项：
+If you need browser push notification functionality, configure the following:
 
 ```bash
-# 1. 生成 VAPID 密钥对
+# 1. Generate VAPID key pair
 cd apps/backend
 pnpm exec web-push generate-vapid-keys --json
 
-# 2. 将输出的密钥添加到 .env
+# 2. Add the output keys to .env
 VAPID_PUBLIC_KEY=BNxxxxxxxxxxxxxx
 VAPID_PRIVATE_KEY=xxxxxxxxxxxxxx
 VAPID_SUBJECT=mailto:your-email@example.com
 ```
 
-**功能说明**:
-- 任务完成后自动推送通知
-- 即使浏览器在后台也能收到
-- 无需额外的推送服务
+**Feature Description**:
+- Automatically push notifications when tasks complete
+- Receive notifications even when browser is in background
+- No additional push service needed
 
-> 💡 **提示**: 如果不配置，系统仍可正常运行，只是没有推送通知功能
+> 💡 **Tip**: If not configured, the system still works normally, just without push notification functionality
 ```
 
 ---
 
-## 配置项说明表格
+## Configuration Item Description Table
 
-### 模板: 配置项详细说明
+### Template: Detailed Configuration Item Description
 
 ```markdown
-## 配置项说明
+## Configuration Items
 
-| 配置项 | 必需 | 默认值 | 说明 | 获取方式 |
+| Configuration Item | Required | Default Value | Description | How to Obtain |
 |--------|------|--------|------|----------|
-| `PORT` | 否 | `3000` | 后端服务端口 | - |
-| `NODE_ENV` | 否 | `development` | 运行环境 | - |
-| `DATABASE_PATH` | 否 | `./data/db.sqlite` | 数据库文件路径 | - |
-| `TELEGRAM_API_ID` | 是 | - | Telegram API ID | [my.telegram.org](https://my.telegram.org) |
-| `TELEGRAM_API_HASH` | 是 | - | Telegram API Hash | [my.telegram.org](https://my.telegram.org) |
-| `AI_PROVIDER` | 是 | `mock` | AI 服务商 | - |
-| `AI_API_KEY` | 是* | - | AI API 密钥 | 对应服务商官网 |
-| `AI_API_BASE_URL` | 是* | - | AI API 端点 | 对应服务商文档 |
-| `AI_MODEL` | 是 | `deepseek-chat` | AI 模型名称 | 对应服务商文档 |
-| `GEMINI_API_KEY` | 否 | - | Gemini 专用密钥 | [aistudio.google.com](https://aistudio.google.com/app/apikey) |
-| `VAPID_PUBLIC_KEY` | 否 | - | Web Push 公钥 | 使用 `web-push` 生成 |
-| `VAPID_PRIVATE_KEY` | 否 | - | Web Push 私钥 | 使用 `web-push` 生成 |
-| `VAPID_SUBJECT` | 否 | `mailto:admin@example.com` | Web Push 联系邮箱 | - |
+| `PORT` | No | `3000` | Backend service port | - |
+| `NODE_ENV` | No | `development` | Runtime environment | - |
+| `DATABASE_PATH` | No | `./data/db.sqlite` | Database file path | - |
+| `TELEGRAM_API_ID` | Yes | - | Telegram API ID | [my.telegram.org](https://my.telegram.org) |
+| `TELEGRAM_API_HASH` | Yes | - | Telegram API Hash | [my.telegram.org](https://my.telegram.org) |
+| `AI_PROVIDER` | Yes | `mock` | AI service provider | - |
+| `AI_API_KEY` | Yes* | - | AI API key | Official website of corresponding provider |
+| `AI_API_BASE_URL` | Yes* | - | AI API endpoint | Documentation of corresponding provider |
+| `AI_MODEL` | Yes | `deepseek-chat` | AI model name | Documentation of corresponding provider |
+| `GEMINI_API_KEY` | No | - | Gemini-specific key | [aistudio.google.com](https://aistudio.google.com/app/apikey) |
+| `VAPID_PUBLIC_KEY` | No | - | Web Push public key | Generate using `web-push` |
+| `VAPID_PRIVATE_KEY` | No | - | Web Push private key | Generate using `web-push` |
+| `VAPID_SUBJECT` | No | `mailto:admin@example.com` | Web Push contact email | - |
 
-> *注: 当 `AI_PROVIDER` 不为 `mock` 时必需
+> *Note: Required when `AI_PROVIDER` is not `mock`
 ```
 
 ---
 
-## 配置验证清单
+## Configuration Verification Checklist
 
-### 用户视角检查
-- [ ] 清楚哪些配置是必需的
-- [ ] 知道如何获取每个配置项的值
-- [ ] 理解每个配置项的用途
-- [ ] 能够找到配置示例
-- [ ] 知道配置错误时如何排查
+### User Perspective Checks
+- [ ] Clear which configurations are required
+- [ ] Know how to obtain values for each configuration item
+- [ ] Understand the purpose of each configuration item
+- [ ] Can find configuration examples
+- [ ] Know how to troubleshoot configuration errors
 
-### 技术视角检查
-- [ ] 所有必需配置项都有说明
-- [ ] 提供了多种配置方案（如果适用）
-- [ ] 示例值格式正确
-- [ ] 外部服务链接可访问
-- [ ] 配置文件结构清晰
+### Technical Perspective Checks
+- [ ] All required configuration items are documented
+- [ ] Multiple configuration options provided (if applicable)
+- [ ] Example value formats are correct
+- [ ] External service links are accessible
+- [ ] Configuration file structure is clear
 
-### 文档质量检查
-- [ ] 使用了清晰的分隔线
-- [ ] 配置项按功能分组
-- [ ] 注释简洁明了
-- [ ] 提供了获取方式链接
-- [ ] 包含了故障排查提示
+### Documentation Quality Checks
+- [ ] Clear separator lines used
+- [ ] Configuration items grouped by functionality
+- [ ] Comments are concise and clear
+- [ ] Links provided for obtaining values
+- [ ] Troubleshooting tips included
 
 ---
 
-## 常见错误
+## Common Mistakes
 
-### ❌ 错误示例 1: 缺少分组
+### ❌ Mistake Example 1: Missing Grouping
 
 ```bash
 PORT=3000
@@ -268,60 +268,60 @@ TELEGRAM_API_ID=your_api_id
 AI_API_KEY=your_api_key
 ```
 
-**问题**: 所有配置项混在一起，难以理解和维护。
+**Problem**: All configuration items mixed together, difficult to understand and maintain.
 
-### ✅ 正确示例 1
+### ✅ Correct Example 1
 
 ```bash
 # ========================================
-# 服务器配置
+# Server Configuration
 # ========================================
 PORT=3000
 
 # ========================================
-# 数据库配置
+# Database Configuration
 # ========================================
 DATABASE_PATH=./data/db.sqlite
 
 # ========================================
-# Telegram API 配置
+# Telegram API Configuration
 # ========================================
 TELEGRAM_API_ID=your_api_id
 
 # ========================================
-# AI Provider 配置
+# AI Provider Configuration
 # ========================================
 AI_API_KEY=your_api_key
 ```
 
 ---
 
-### ❌ 错误示例 2: 缺少说明
+### ❌ Mistake Example 2: Missing Documentation
 
 ```bash
 TELEGRAM_API_ID=your_api_id
 TELEGRAM_API_HASH=your_api_hash
 ```
 
-**问题**: 用户不知道如何获取这些值。
+**Problem**: Users don't know how to obtain these values.
 
-### ✅ 正确示例 2
+### ✅ Correct Example 2
 
 ```bash
 # ========================================
-# Telegram API 配置
+# Telegram API Configuration
 # ========================================
-# 从 https://my.telegram.org 获取
-# 1. 登录 Telegram 账号
-# 2. 点击 "API development tools"
-# 3. 创建应用获取 api_id 和 api_hash
+# Obtain from https://my.telegram.org
+# 1. Log in to your Telegram account
+# 2. Click "API development tools"
+# 3. Create an application to get api_id and api_hash
 TELEGRAM_API_ID=your_api_id
 TELEGRAM_API_HASH=your_api_hash
 ```
 
 ---
 
-### ❌ 错误示例 3: 多方案混乱
+### ❌ Mistake Example 3: Confusing Multiple Options
 
 ```bash
 AI_PROVIDER=deepseek
@@ -330,27 +330,27 @@ AI_API_BASE_URL=https://api.deepseek.com/v1
 GEMINI_API_KEY=your_gemini_key
 ```
 
-**问题**: 不清楚什么时候用哪个配置。
+**Problem**: Unclear which configuration to use when.
 
-### ✅ 正确示例 3
+### ✅ Correct Example 3
 
 ```bash
 # ========================================
-# AI Provider 配置
+# AI Provider Configuration
 # ========================================
-AI_PROVIDER=deepseek  # 可选: mock | openai | deepseek | gemini
+AI_PROVIDER=deepseek  # Options: mock | openai | deepseek | gemini
 
 # ----------------------------------------
-# OpenAI 兼容 API 配置（用于 openai/deepseek/custom）
+# OpenAI Compatible API Configuration (for openai/deepseek/custom)
 # ----------------------------------------
 AI_API_KEY=your_api_key
 AI_API_BASE_URL=https://api.deepseek.com/v1
 AI_MODEL=deepseek-chat
 
 # ----------------------------------------
-# Google Gemini 专用配置
+# Google Gemini Specific Configuration
 # ----------------------------------------
-# 如果使用 Gemini，取消下面的注释并配置
+# If using Gemini, uncomment the following and configure
 # AI_PROVIDER=gemini
 # GEMINI_API_KEY=your_gemini_api_key
 # AI_MODEL=gemini-2.5-flash
@@ -358,28 +358,28 @@ AI_MODEL=deepseek-chat
 
 ---
 
-## 配置文件最佳实践
+## Configuration File Best Practices
 
-### 1. 使用分隔线
-- 主分类使用 `# ========================================`
-- 子分类使用 `# ----------------------------------------`
+### 1. Use Separator Lines
+- Main categories use `# ========================================`
+- Subcategories use `# ----------------------------------------`
 
-### 2. 注释规范
-- 每个分组都有标题注释
-- 复杂配置项提供获取方式
-- 可选配置项明确标注"可选"
+### 2. Comment Standards
+- Each group has a title comment
+- Complex configuration items provide how to obtain them
+- Optional configuration items clearly marked as "optional"
 
-### 3. 示例值规范
-- 使用 `your_*` 作为占位符
-- 提供真实格式的示例（如 `sk-xxxxx`）
-- 敏感信息使用占位符，不要使用真实值
+### 3. Example Value Standards
+- Use `your_*` as placeholders
+- Provide examples in real format (e.g., `sk-xxxxx`)
+- Use placeholders for sensitive information, never use real values
 
-### 4. 多方案处理
-- 使用注释说明不同方案
-- 非默认方案使用 `#` 注释掉
-- 提供切换方案的说明
+### 4. Multi-Option Handling
+- Use comments to explain different options
+- Comment out non-default options with `#`
+- Provide instructions for switching options
 
-### 5. 依赖关系
-- 说明配置项之间的依赖关系
-- 标注条件必需的配置项
-- 提供配置组合示例
+### 5. Dependency Relationships
+- Explain dependencies between configuration items
+- Mark conditionally required configuration items
+- Provide configuration combination examples

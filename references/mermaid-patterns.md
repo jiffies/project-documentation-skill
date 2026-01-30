@@ -1,39 +1,39 @@
-# Mermaid 流程图设计模式
+# Mermaid Flowchart Design Patterns
 
-## 核心流程图（用户操作流程）
+## Core Flow Diagram (User Operation Flow)
 
-### 用途
-展示用户从启动系统到完成核心任务的完整流程，包括决策点和分支路径。
+### Purpose
+Show the complete flow from user starting the system to completing core tasks, including decision points and branch paths.
 
-### 设计原则
-1. **自上而下**：从用户启动开始，到核心功能完成结束
-2. **决策节点**：使用菱形表示关键决策点（如"是否已登录？"）
-3. **状态节点**：使用圆角矩形表示操作步骤
-4. **颜色编码**：使用不同颜色区分不同类型的节点
+### Design Principles
+1. **Top-Down**: From user startup to core function completion
+2. **Decision Nodes**: Use diamonds for key decision points (e.g., "Is user authenticated?")
+3. **State Nodes**: Use rounded rectangles for operation steps
+4. **Color Coding**: Use different colors to distinguish different types of nodes
 
-### 模板
+### Template
 
 ```mermaid
 graph TB
-    Start([用户启动系统]) --> Init[初始化客户端]
-    Init --> Auth{是否已认证?}
-    Auth -->|否| Login[登录流程]
-    Auth -->|是| LoadSession[加载会话]
-    Login --> SaveSession[保存会话]
-    LoadSession --> Connect[连接服务器]
+    Start([User Starts System]) --> Init[Initialize Client]
+    Init --> Auth{Authenticated?}
+    Auth -->|No| Login[Login Flow]
+    Auth -->|Yes| LoadSession[Load Session]
+    Login --> SaveSession[Save Session]
+    LoadSession --> Connect[Connect to Server]
     SaveSession --> Connect
 
-    Connect --> Dashboard[启动 Dashboard]
-    Dashboard --> UserAction{用户操作}
+    Connect --> Dashboard[Launch Dashboard]
+    Dashboard --> UserAction{User Action}
 
-    UserAction -->|操作A| ActionA[执行操作A]
-    UserAction -->|操作B| ActionB[执行操作B]
+    UserAction -->|Action A| ActionA[Execute Action A]
+    UserAction -->|Action B| ActionB[Execute Action B]
 
-    ActionA --> Process[处理流程]
+    ActionA --> Process[Processing Flow]
     ActionB --> Process
 
-    Process --> Result[保存结果]
-    Result --> Notify[通知用户]
+    Process --> Result[Save Result]
+    Result --> Notify[Notify User]
 
     Notify --> Dashboard
 
@@ -43,102 +43,102 @@ graph TB
     style Notify fill:#fce4ec
 ```
 
-### 关键元素
-- `([文本])`：圆形起点/终点
-- `[文本]`：矩形操作节点
-- `{文本}`：菱形决策节点
-- `-->|标签|`：带标签的箭头
-- `style 节点名 fill:#颜色`：节点着色
+### Key Elements
+- `([text])`: Circular start/end point
+- `[text]`: Rectangular operation node
+- `{text}`: Diamond decision node
+- `-->|label|`: Labeled arrow
+- `style nodeName fill:#color`: Node coloring
 
 ---
 
-## 数据流向图（系统交互时序）
+## Data Flow Diagram (System Interaction Sequence)
 
-### 用途
-展示系统各组件之间的交互顺序和数据流动，清晰呈现请求-响应模式。
+### Purpose
+Show interaction sequence and data flow between system components, clearly presenting request-response patterns.
 
-### 设计原则
-1. **参与者分层**：从用户到前端、后端、数据库、外部服务
-2. **序号标注**：为每个交互步骤添加序号
-3. **同步/异步**：使用实线表示同步，虚线表示异步
-4. **分组逻辑**：将相关的交互步骤分组
+### Design Principles
+1. **Participant Layering**: From user to frontend, backend, database, external services
+2. **Sequence Numbering**: Add sequence numbers to each interaction step
+3. **Sync/Async**: Use solid lines for synchronous, dashed lines for asynchronous
+4. **Logical Grouping**: Group related interaction steps
 
-### 模板
+### Template
 
 ```mermaid
 sequenceDiagram
-    participant U as 用户
-    participant F as 前端
-    participant B as 后端 API
-    participant D as 数据库
-    participant E as 外部服务
+    participant U as User
+    participant F as Frontend
+    participant B as Backend API
+    participant D as Database
+    participant E as External Service
 
-    U->>F: 1. 发起请求
-    F->>B: 2. API 调用
-    B->>D: 3. 查询数据
-    D-->>B: 4. 返回数据
-    B-->>F: 5. 返回 JSON
-    F-->>U: 6. 显示结果
+    U->>F: 1. Initiate Request
+    F->>B: 2. API Call
+    B->>D: 3. Query Data
+    D-->>B: 4. Return Data
+    B-->>F: 5. Return JSON
+    F-->>U: 6. Display Result
 
-    U->>F: 7. 触发操作
-    F->>B: 8. POST 请求
-    B->>D: 9. 创建任务
-    D-->>B: 10. 返回任务ID
-    B-->>F: 11. 返回 { taskId: 123 }
-    F-->>U: 12. 显示进度
+    U->>F: 7. Trigger Action
+    F->>B: 8. POST Request
+    B->>D: 9. Create Task
+    D-->>B: 10. Return Task ID
+    B-->>F: 11. Return { taskId: 123 }
+    F-->>U: 12. Show Progress
 
-    B->>E: 13. 调用外部服务
-    E-->>B: 14. 返回结果
-    B->>D: 15. 保存结果
-    B->>F: 16. 推送通知
-    F-->>U: 17. 显示完成
+    B->>E: 13. Call External Service
+    E-->>B: 14. Return Result
+    B->>D: 15. Save Result
+    B->>F: 16. Push Notification
+    F-->>U: 17. Show Completion
 ```
 
-### 关键元素
-- `participant X as 名称`：定义参与者
-- `->>`：实线箭头（同步调用）
-- `-->>`：虚线箭头（返回/异步）
-- `序号. 描述`：为每个交互添加序号和描述
+### Key Elements
+- `participant X as Name`: Define participant
+- `->>`: Solid arrow (synchronous call)
+- `-->>`: Dashed arrow (return/asynchronous)
+- `Number. Description`: Add sequence number and description to each interaction
 
 ---
 
-## 技术架构图（系统分层结构）
+## Technical Architecture Diagram (System Layered Structure)
 
-### 用途
-展示系统的技术栈和各层之间的依赖关系，帮助理解整体架构。
+### Purpose
+Show system tech stack and dependencies between layers, helping understand overall architecture.
 
-### 设计原则
-1. **分层清晰**：前端层、后端层、数据层、外部服务层
-2. **技术标注**：在节点中标注具体技术栈
-3. **依赖方向**：箭头表示依赖关系
-4. **颜色区分**：不同层使用不同颜色
+### Design Principles
+1. **Clear Layering**: Frontend layer, backend layer, data layer, external services layer
+2. **Technology Labels**: Label specific tech stack in nodes
+3. **Dependency Direction**: Arrows indicate dependency relationships
+4. **Color Differentiation**: Different layers use different colors
 
-### 模板
+### Template
 
 ```mermaid
 graph LR
-    subgraph "前端层"
+    subgraph "Frontend Layer"
         Web[React + Vite]
-        UI[UI 组件库]
-        State[状态管理]
+        UI[UI Component Library]
+        State[State Management]
     end
 
-    subgraph "后端层"
-        API[API Server<br/>框架名]
-        Service1[服务1<br/>功能描述]
-        Service2[服务2<br/>功能描述]
-        Scheduler[定时任务<br/>工具名]
+    subgraph "Backend Layer"
+        API[API Server<br/>Framework Name]
+        Service1[Service 1<br/>Function Description]
+        Service2[Service 2<br/>Function Description]
+        Scheduler[Scheduled Tasks<br/>Tool Name]
     end
 
-    subgraph "数据层"
-        DB[(数据库<br/>类型)]
-        ORM[ORM 工具]
-        Cache[(缓存<br/>类型)]
+    subgraph "Data Layer"
+        DB[(Database<br/>Type)]
+        ORM[ORM Tool]
+        Cache[(Cache<br/>Type)]
     end
 
-    subgraph "外部服务"
-        External1[外部服务1]
-        External2[外部服务2]
+    subgraph "External Services"
+        External1[External Service 1]
+        External2[External Service 2]
     end
 
     Web --> API
@@ -162,36 +162,36 @@ graph LR
     style External2 fill:#ff9800
 ```
 
-### 关键元素
-- `subgraph "名称"`：定义分组
-- `[文本<br/>换行]`：节点内换行
-- `[(文本)]`：圆柱形（数据库）
-- `-->`：依赖箭头
-- `style 节点名 fill:#颜色`：节点着色
+### Key Elements
+- `subgraph "Name"`: Define grouping
+- `[Text<br/>Newline]`: Line break within node
+- `[(Text)]`: Cylinder shape (database)
+- `-->`: Dependency arrow
+- `style nodeName fill:#color`: Node coloring
 
 ---
 
-## 最佳实践
+## Best Practices
 
-### 1. 节点命名
-- 使用简洁的中文描述
-- 避免过长的文本（超过 20 字考虑换行）
-- 使用 `<br/>` 进行换行
+### 1. Node Naming
+- Use concise descriptions
+- Avoid overly long text (consider line breaks for text over 20 characters)
+- Use `<br/>` for line breaks
 
-### 2. 颜色选择
-- 起点/成功：绿色系 `#e1f5e1`
-- 用户界面：蓝色系 `#e3f2fd`
-- 处理/计算：橙色系 `#fff3e0`
-- 通知/结果：粉色系 `#fce4ec`
-- 数据库：深绿色 `#4caf50`
-- 外部服务：橙色 `#ff9800`
+### 2. Color Selection
+- Start/Success: Green tones `#e1f5e1`
+- User Interface: Blue tones `#e3f2fd`
+- Processing/Computing: Orange tones `#fff3e0`
+- Notification/Result: Pink tones `#fce4ec`
+- Database: Dark green `#4caf50`
+- External Services: Orange `#ff9800`
 
-### 3. 复杂度控制
-- 单个图表不超过 20 个节点
-- 超过 20 个节点考虑拆分为多个图表
-- 使用 subgraph 对相关节点分组
+### 3. Complexity Control
+- Single diagram should not exceed 20 nodes
+- Consider splitting into multiple diagrams if exceeding 20 nodes
+- Use subgraph to group related nodes
 
-### 4. 可读性优化
-- 保持箭头方向一致（自上而下或从左到右）
-- 避免交叉线
-- 使用空行分隔逻辑块
+### 4. Readability Optimization
+- Keep arrow direction consistent (top-down or left-right)
+- Avoid crossing lines
+- Use blank lines to separate logical blocks

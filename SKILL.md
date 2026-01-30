@@ -1,325 +1,325 @@
 ---
 name: project-documentation
-description: 为软件项目创建高质量的 README 和系统文档。使用场景：(1) 需要为项目编写或更新 README 文档，(2) 需要添加系统运行原理流程图（Mermaid），(3) 需要编写详细的 Step by Step 使用步骤，(4) 需要组织和优化配置说明（环境变量、配置文件），(5) 需要让文档对新用户更友好和易于理解。适用于任何需要完善项目文档的场景，特别是开源项目、内部工具、API 服务等。
+description: Create high-quality README and system documentation for software projects. Use cases: (1) Writing or updating project README documentation, (2) Adding system operation principle flowcharts (Mermaid), (3) Writing detailed step-by-step usage instructions, (4) Organizing and optimizing configuration descriptions (environment variables, config files), (5) Making documentation more user-friendly and easier to understand. Applicable to any scenario requiring improved project documentation, especially open-source projects, internal tools, and API services.
 ---
 
 # Project Documentation
 
-为软件项目创建清晰、完整、用户友好的 README 和系统文档。
+Create clear, complete, and user-friendly README and system documentation for software projects.
 
-## 核心能力
+## Core Capabilities
 
-本 skill 帮助你创建包含以下内容的高质量项目文档：
+This skill helps you create high-quality project documentation including:
 
-1. **Mermaid 流程图** - 可视化系统运行原理
-2. **Step by Step 使用步骤** - 详细的新手引导
-3. **配置说明** - 清晰的环境变量和配置文件组织
+1. **Mermaid Flowcharts** - Visualize system operation principles
+2. **Step-by-Step Usage Instructions** - Detailed beginner guides
+3. **Configuration Documentation** - Clear organization of environment variables and config files
 
-## 工作流程
+## Workflow
 
-### 1. 理解项目
+### 1. Understand the Project
 
-在开始编写文档之前，先理解项目的核心内容：
+Before writing documentation, understand the project's core content:
 
-**必须了解的信息**：
-- 项目的核心功能是什么？
-- 技术栈是什么？（前端、后端、数据库、外部服务）
-- 用户如何使用这个项目？（启动流程、核心操作）
-- 需要哪些外部依赖？（API Key、账号、工具）
-- 配置项有哪些？（必需 vs 可选）
+**Essential Information**:
+- What are the project's core features?
+- What is the tech stack? (frontend, backend, database, external services)
+- How do users use this project? (startup process, core operations)
+- What external dependencies are needed? (API Keys, accounts, tools)
+- What configuration items exist? (required vs optional)
 
-**信息收集方式**：
-- 阅读现有的 README（如果有）
-- 查看 package.json 或类似的依赖配置文件
-- 查看 .env.example 或配置文件
-- 查看主要的代码文件（如 main.ts、app.ts、routes/）
-- 询问用户关键信息
+**Information Gathering Methods**:
+- Read existing README (if available)
+- Check package.json or similar dependency config files
+- Review .env.example or config files
+- Examine main code files (e.g., main.ts, app.ts, routes/)
+- Ask users for key information
 
-### 2. 创建 Mermaid 流程图
+### 2. Create Mermaid Flowcharts
 
-根据项目类型选择合适的流程图：
+Choose appropriate flowcharts based on project type:
 
-#### 核心流程图（必需）
-展示用户从启动到完成核心任务的完整流程。
+#### Core Flow Diagram (Required)
+Shows the complete flow from user startup to completing core tasks.
 
-**何时使用**：所有项目都应该有核心流程图。
+**When to Use**: All projects should have a core flow diagram.
 
-**参考模板**：见 [references/mermaid-patterns.md](references/mermaid-patterns.md) 的"核心流程图"部分。
+**Reference Template**: See "Core Flow Diagram" section in [references/mermaid-patterns.md](references/mermaid-patterns.md).
 
-**关键要素**：
-- 起点：用户启动系统
-- 决策点：登录验证、配置检查等
-- 核心操作：主要功能流程
-- 终点：任务完成或返回主界面
+**Key Elements**:
+- Starting point: User starts system
+- Decision points: Login verification, config checks, etc.
+- Core operations: Main feature flows
+- Endpoint: Task completion or return to main interface
 
-#### 数据流向图（推荐）
-展示系统各组件之间的交互顺序。
+#### Data Flow Diagram (Recommended)
+Shows interaction sequence between system components.
 
-**何时使用**：
-- 前后端分离的项目
-- 涉及多个服务交互的项目
-- 需要说明 API 调用流程的项目
+**When to Use**:
+- Projects with separated frontend and backend
+- Projects involving multiple service interactions
+- Projects requiring API call flow explanation
 
-**参考模板**：见 [references/mermaid-patterns.md](references/mermaid-patterns.md) 的"数据流向图"部分。
+**Reference Template**: See "Data Flow Diagram" section in [references/mermaid-patterns.md](references/mermaid-patterns.md).
 
-**关键要素**：
-- 参与者：用户、前端、后端、数据库、外部服务
-- 交互序号：为每个步骤编号
-- 请求-响应：清晰标注数据流向
+**Key Elements**:
+- Participants: User, frontend, backend, database, external services
+- Interaction numbering: Number each step
+- Request-response: Clearly mark data flow direction
 
-#### 技术架构图（推荐）
-展示系统的技术栈和分层结构。
+#### Technical Architecture Diagram (Recommended)
+Shows system tech stack and layered structure.
 
-**何时使用**：
-- 技术栈复杂的项目
-- 需要说明系统架构的项目
-- 多层架构的项目
+**When to Use**:
+- Projects with complex tech stacks
+- Projects requiring system architecture explanation
+- Multi-layered architecture projects
 
-**参考模板**：见 [references/mermaid-patterns.md](references/mermaid-patterns.md) 的"技术架构图"部分。
+**Reference Template**: See "Technical Architecture Diagram" section in [references/mermaid-patterns.md](references/mermaid-patterns.md).
 
-**关键要素**：
-- 分层：前端层、后端层、数据层、外部服务层
-- 技术标注：具体的框架和工具
-- 依赖关系：箭头表示依赖方向
+**Key Elements**:
+- Layers: Frontend layer, backend layer, data layer, external services layer
+- Technology labels: Specific frameworks and tools
+- Dependencies: Arrows indicate dependency direction
 
-**完整的 Mermaid 模板和最佳实践**：阅读 [references/mermaid-patterns.md](references/mermaid-patterns.md)
+**Complete Mermaid Templates and Best Practices**: Read [references/mermaid-patterns.md](references/mermaid-patterns.md)
 
-### 3. 编写 Step by Step 使用步骤
+### 3. Write Step-by-Step Usage Instructions
 
-按照以下结构组织使用步骤：
+Organize usage steps according to the following structure:
 
-#### 前置要求
-列出用户需要准备的内容：
-- 软件依赖（Node.js、Python 等，包含版本要求）
-- 包管理器（npm、pnpm、pip 等）
-- 外部账号（如果需要）
-- 其他工具
+#### Prerequisites
+List what users need to prepare:
+- Software dependencies (Node.js, Python, etc., including version requirements)
+- Package managers (npm, pnpm, pip, etc.)
+- External accounts (if needed)
+- Other tools
 
-#### 标准步骤序列
-1. **克隆项目并安装依赖**
-2. **获取外部服务凭证**（如果需要）
-3. **配置环境变量**
-4. **初始化系统**（如果需要）
-5. **启动服务**
-6. **使用功能**
-7. **验证系统运行**
+#### Standard Step Sequence
+1. **Clone project and install dependencies**
+2. **Obtain external service credentials** (if needed)
+3. **Configure environment variables**
+4. **Initialize system** (if needed)
+5. **Start services**
+6. **Use features**
+7. **Verify system operation**
 
-#### 每个步骤的标准格式
+#### Standard Format for Each Step
 ```markdown
-### 步骤 N: 动词开头的标题
+### Step N: Verb-led Title
 
-简短说明这一步的目的（1-2 句话）。
+Brief explanation of this step's purpose (1-2 sentences).
 
-1. 具体操作 1
-2. 具体操作 2
-3. 具体操作 3
+1. Specific operation 1
+2. Specific operation 2
+3. Specific operation 3
 
 \`\`\`bash
-# 如果有命令，提供完整的可复制命令
+# If commands are needed, provide complete copy-paste commands
 command --option value
 \`\`\`
 
-**预期输出**:
+**Expected Output**:
 \`\`\`
-期望看到的输出内容
+Expected output content
 \`\`\`
 
-> 💡 **提示**: 额外说明或技巧
-> ⚠️ **注意**: 常见错误或注意事项
+> 💡 **Tip**: Additional notes or tricks
+> ⚠️ **Note**: Common errors or precautions
 ```
 
-**完整的步骤编写指南**：阅读 [references/step-by-step-guide.md](references/step-by-step-guide.md)
+**Complete Step Writing Guide**: Read [references/step-by-step-guide.md](references/step-by-step-guide.md)
 
-### 4. 组织配置说明
+### 4. Organize Configuration Documentation
 
-#### .env.example 文件结构
+#### .env.example File Structure
 
-使用清晰的分隔线和分组：
+Use clear separators and grouping:
 
 ```bash
 # ========================================
-# 主分类标题
+# Main Category Title
 # ========================================
-配置项=示例值
+CONFIG_ITEM=example_value
 
 # ----------------------------------------
-# 子分类标题
+# Subcategory Title
 # ----------------------------------------
-配置项=示例值
+CONFIG_ITEM=example_value
 ```
 
-#### README 中的配置说明
+#### Configuration Documentation in README
 
-**必需配置项**：
-- 明确标注"必需"
-- 提供获取方式
-- 给出完整示例
-- 说明用途
+**Required Configuration Items**:
+- Clearly mark as "required"
+- Provide acquisition method
+- Give complete examples
+- Explain purpose
 
-**可选配置项**：
-- 明确标注"可选"
-- 说明功能影响
-- 提供默认值
-- 给出配置示例
+**Optional Configuration Items**:
+- Clearly mark as "optional"
+- Explain functional impact
+- Provide default values
+- Give configuration examples
 
-**多方案配置**：
-- 使用表格对比不同方案
-- 为每个方案提供完整配置示例
-- 说明适用场景
-- 标注推荐方案
+**Multi-Option Configuration**:
+- Use tables to compare different options
+- Provide complete configuration examples for each option
+- Explain applicable scenarios
+- Mark recommended options
 
-**完整的配置组织指南**：阅读 [references/config-organization.md](references/config-organization.md)
+**Complete Configuration Organization Guide**: Read [references/config-organization.md](references/config-organization.md)
 
-### 5. 文档结构建议
+### 5. Documentation Structure Recommendations
 
-推荐的 README 结构：
+Recommended README structure:
 
 ```markdown
-# 项目名称 - 简短描述
+# Project Name - Brief Description
 
-> 一句话说明项目的核心功能
+> One sentence explaining the project's core functionality
 
-## 特性
+## Features
 
-- ✅ 特性 1
-- ✅ 特性 2
-- ✅ 特性 3
+- ✅ Feature 1
+- ✅ Feature 2
+- ✅ Feature 3
 
-## 系统运行原理
+## System Operation Principles
 
-### 核心流程图
-[Mermaid 核心流程图]
+### Core Flow Diagram
+[Mermaid Core Flow Diagram]
 
-### 数据流向图
-[Mermaid 数据流向图]
+### Data Flow Diagram
+[Mermaid Data Flow Diagram]
 
-### 技术架构图
-[Mermaid 技术架构图]
+### Technical Architecture Diagram
+[Mermaid Technical Architecture Diagram]
 
-## 快速开始（Step by Step）
+## Quick Start (Step by Step)
 
-### 前置要求
-[前置要求清单]
+### Prerequisites
+[Prerequisites checklist]
 
-### 步骤 1: ...
-[详细步骤]
+### Step 1: ...
+[Detailed steps]
 
-### 步骤 2: ...
-[详细步骤]
+### Step 2: ...
+[Detailed steps]
 
 ...
 
-## 常用命令
+## Common Commands
 
-[常用命令列表]
+[Common commands list]
 
-## API 示例
+## API Examples
 
-[API 使用示例]
+[API usage examples]
 
-## 技术栈
+## Tech Stack
 
-[技术栈列表]
+[Tech stack list]
 
-## 项目结构
+## Project Structure
 
-[目录结构说明]
+[Directory structure description]
 
-## 文档
+## Documentation
 
-[其他文档链接]
+[Other documentation links]
 
-## 重要提示
+## Important Notes
 
-[注意事项和风险提示]
+[Precautions and risk warnings]
 
 ## License
 
-[许可证信息]
+[License information]
 ```
 
-## 质量检查清单
+## Quality Checklist
 
-完成文档编写后，使用以下清单验证质量：
+After completing documentation, verify quality using the following checklist:
 
-### 流程图检查
-- [ ] 核心流程图清晰展示了用户操作流程
-- [ ] 数据流向图准确反映了系统交互
-- [ ] 技术架构图完整展示了技术栈
-- [ ] 所有图表都使用了合适的颜色和样式
-- [ ] 图表复杂度适中（不超过 20 个节点）
+### Flowchart Check
+- [ ] Core flow diagram clearly shows user operation flow
+- [ ] Data flow diagram accurately reflects system interactions
+- [ ] Technical architecture diagram completely shows tech stack
+- [ ] All diagrams use appropriate colors and styles
+- [ ] Diagram complexity is moderate (no more than 20 nodes)
 
-### 使用步骤检查
-- [ ] 前置要求清单完整
-- [ ] 每个步骤都有清晰的标题和目的说明
-- [ ] 提供了完整的可复制命令
-- [ ] 说明了预期输出或结果
-- [ ] 包含了常见问题提示
-- [ ] 步骤顺序符合实际操作流程
+### Usage Steps Check
+- [ ] Prerequisites checklist is complete
+- [ ] Each step has clear title and purpose explanation
+- [ ] Complete copy-paste commands provided
+- [ ] Expected output or results explained
+- [ ] Common problem tips included
+- [ ] Step sequence matches actual operation flow
 
-### 配置说明检查
-- [ ] 必需配置项和可选配置项分类清晰
-- [ ] 每个配置项都有用途说明
-- [ ] 提供了获取外部服务凭证的详细步骤
-- [ ] 配置文件使用了清晰的分隔线和分组
-- [ ] 多方案配置有对比和推荐
+### Configuration Documentation Check
+- [ ] Required and optional configuration items clearly categorized
+- [ ] Each configuration item has purpose explanation
+- [ ] Detailed steps provided for obtaining external service credentials
+- [ ] Config files use clear separators and grouping
+- [ ] Multi-option configurations have comparison and recommendations
 
-### 用户友好性检查
-- [ ] 使用了清晰的图标（✅ ⚠️ 💡）
-- [ ] 提供了多种方案选择（如果适用）
-- [ ] 包含了故障排查提示
-- [ ] 语言简洁易懂
-- [ ] 所有外部链接都可访问
+### User-Friendliness Check
+- [ ] Clear icons used (✅ ⚠️ 💡)
+- [ ] Multiple option choices provided (if applicable)
+- [ ] Troubleshooting tips included
+- [ ] Language is concise and easy to understand
+- [ ] All external links are accessible
 
-## 参考资源
+## Reference Resources
 
-本 skill 包含以下参考文档，按需阅读：
+This skill includes the following reference documents, read as needed:
 
-- **[mermaid-patterns.md](references/mermaid-patterns.md)** - Mermaid 流程图设计模式和模板
-- **[step-by-step-guide.md](references/step-by-step-guide.md)** - Step by Step 使用步骤编写指南
-- **[config-organization.md](references/config-organization.md)** - 配置说明组织指南
+- **[mermaid-patterns.md](references/mermaid-patterns.md)** - Mermaid flowchart design patterns and templates
+- **[step-by-step-guide.md](references/step-by-step-guide.md)** - Step-by-step usage instruction writing guide
+- **[config-organization.md](references/config-organization.md)** - Configuration documentation organization guide
 
-## 常见场景
+## Common Scenarios
 
-### 场景 1: 为新项目创建 README
+### Scenario 1: Create README for New Project
 
-1. 使用 Glob/Read 工具了解项目结构
-2. 查看 package.json、.env.example 等配置文件
-3. 创建核心流程图、数据流向图、技术架构图
-4. 编写详细的 Step by Step 使用步骤
-5. 组织配置说明
-6. 使用质量检查清单验证
+1. Use Glob/Read tools to understand project structure
+2. Check package.json, .env.example, and other config files
+3. Create core flow diagram, data flow diagram, technical architecture diagram
+4. Write detailed step-by-step usage instructions
+5. Organize configuration documentation
+6. Verify using quality checklist
 
-### 场景 2: 更新现有 README
+### Scenario 2: Update Existing README
 
-1. 阅读现有 README
-2. 识别缺失或不清晰的部分
-3. 补充 Mermaid 流程图（如果没有）
-4. 优化使用步骤（添加预期输出、提示等）
-5. 重新组织配置说明（使用分隔线、分组）
-6. 使用质量检查清单验证
+1. Read existing README
+2. Identify missing or unclear parts
+3. Add Mermaid flowcharts (if missing)
+4. Optimize usage steps (add expected output, tips, etc.)
+5. Reorganize configuration documentation (use separators, grouping)
+6. Verify using quality checklist
 
-### 场景 3: 优化配置文件
+### Scenario 3: Optimize Configuration Files
 
-1. 阅读现有 .env.example
-2. 按功能分组配置项
-3. 添加清晰的分隔线和注释
-4. 标注必需 vs 可选
-5. 提供获取方式链接
-6. 在 README 中添加详细的配置说明
+1. Read existing .env.example
+2. Group configuration items by function
+3. Add clear separators and comments
+4. Mark required vs optional
+5. Provide acquisition method links
+6. Add detailed configuration documentation in README
 
-## 最佳实践
+## Best Practices
 
-1. **用户视角优先** - 从完全不了解项目的新用户角度出发
-2. **可操作性** - 所有命令都应该可以直接复制粘贴执行
-3. **完整性** - 包含所有必要的信息，不遗漏关键步骤
-4. **清晰性** - 使用图表、表格、代码块等提高可读性
-5. **验证性** - 提供验证步骤，让用户确认操作成功
+1. **User Perspective First** - Start from the perspective of a completely new user unfamiliar with the project
+2. **Actionability** - All commands should be directly copy-pasteable
+3. **Completeness** - Include all necessary information, don't skip key steps
+4. **Clarity** - Use diagrams, tables, code blocks to improve readability
+5. **Verifiability** - Provide verification steps to let users confirm successful operations
 
-## 注意事项
+## Important Notes
 
-- 不要假设用户有任何背景知识
-- 不要跳过任何步骤
-- 不要使用模糊的描述（如"配置好环境变量"）
-- 不要遗漏预期输出或验证步骤
-- 不要忘记添加常见问题提示
+- Don't assume users have any background knowledge
+- Don't skip any steps
+- Don't use vague descriptions (like "configure environment variables properly")
+- Don't omit expected output or verification steps
+- Don't forget to add common problem tips

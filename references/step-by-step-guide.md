@@ -1,170 +1,170 @@
-# Step by Step 使用步骤编写指南
+# Step by Step Usage Guide Writing Guidelines
 
-## 核心原则
+## Core Principles
 
-### 1. 用户视角
-从完全不了解项目的新用户角度出发，假设用户：
-- 没有任何背景知识
-- 需要明确的操作指令
-- 希望知道每一步的目的
-- 需要验证每一步是否成功
+### 1. User Perspective
+Start from the perspective of a completely new user unfamiliar with the project, assuming the user:
+- Has no background knowledge
+- Needs clear operational instructions
+- Wants to understand the purpose of each step
+- Needs to verify if each step is successful
 
-### 2. 渐进式引导
-按照实际操作顺序组织步骤：
-1. 前置要求检查
-2. 获取外部依赖
-3. 配置环境
-4. 初始化系统
-5. 启动服务
-6. 验证运行
-7. 使用功能
+### 2. Progressive Guidance
+Organize steps according to the actual operational sequence:
+1. Prerequisites check
+2. Obtain external dependencies
+3. Configure environment
+4. Initialize system
+5. Start services
+6. Verify operation
+7. Use features
 
-### 3. 完整性
-每个步骤都应包含：
-- 清晰的标题（动词开头）
-- 操作目的说明
-- 具体的命令或操作
-- 预期的输出或结果
-- 常见问题提示
+### 3. Completeness
+Each step should include:
+- Clear title (starting with a verb)
+- Purpose explanation
+- Specific commands or operations
+- Expected output or results
+- Common issue tips
 
 ---
 
-## 步骤模板
+## Step Template
 
-### 前置要求
+### Prerequisites
 
 ```markdown
-### 前置要求
+### Prerequisites
 
-- ✅ 软件依赖 1（版本要求）
-- ✅ 软件依赖 2
-- ✅ 账号要求（如果需要）
-- ✅ 其他要求
+- ✅ Software dependency 1 (version requirement)
+- ✅ Software dependency 2
+- ✅ Account requirement (if needed)
+- ✅ Other requirements
 
-> 💡 **提示**: 可选的额外说明
-> ⚠️ **警告**: 重要的注意事项
+> 💡 **Tip**: Optional additional explanation
+> ⚠️ **Warning**: Important notes
 ```
 
-### 标准步骤格式
+### Standard Step Format
 
 ```markdown
-### 步骤 N: 动词开头的标题
+### Step N: Title Starting with Verb
 
-简短说明这一步的目的（1-2 句话）。
+Brief explanation of the purpose of this step (1-2 sentences).
 
-#### 子步骤 1: 具体操作
+#### Sub-step 1: Specific Operation
 
-1. 访问 [链接文本](URL)
-2. 执行某个操作
-3. 获取某个信息
+1. Visit [link text](URL)
+2. Perform an operation
+3. Obtain some information
 
 \`\`\`bash
-# 如果有命令，提供完整的可复制命令
+# If there are commands, provide complete copyable commands
 command --option value
 \`\`\`
 
-**预期输出**:
+**Expected Output**:
 \`\`\`
-期望看到的输出内容
+Expected output content
 \`\`\`
 
-> 💡 **提示**: 这一步的额外说明或技巧
-> ⚠️ **注意**: 常见错误或注意事项
+> 💡 **Tip**: Additional explanation or tips for this step
+> ⚠️ **Note**: Common errors or precautions
 ```
 
 ---
 
-## 实际示例
+## Practical Examples
 
-### 示例 1: 获取外部服务凭证
+### Example 1: Obtaining External Service Credentials
 
 ```markdown
-### 步骤 2: 获取 Telegram API 凭证
+### Step 2: Obtain Telegram API Credentials
 
-Telegram API 凭证用于连接 Telegram 服务器，拉取群组消息。
+Telegram API credentials are used to connect to the Telegram server and fetch group messages.
 
-1. 访问 [https://my.telegram.org](https://my.telegram.org)
-2. 使用你的 Telegram 账号登录（输入手机号和验证码）
-3. 点击 "API development tools"
-4. 填写应用信息：
-   - App title: 随意填写（如 "My Bot"）
-   - Short name: 随意填写（如 "mybot"）
-   - Platform: 选择 "Other"
-5. 点击 "Create application"
-6. 记录以下信息：
-   - `api_id`: 一串数字（如 12345678）
-   - `api_hash`: 一串字母数字组合（如 abcdef1234567890）
+1. Visit [https://my.telegram.org](https://my.telegram.org)
+2. Log in with your Telegram account (enter phone number and verification code)
+3. Click "API development tools"
+4. Fill in application information:
+   - App title: Fill in anything (e.g., "My Bot")
+   - Short name: Fill in anything (e.g., "mybot")
+   - Platform: Select "Other"
+5. Click "Create application"
+6. Record the following information:
+   - `api_id`: A string of numbers (e.g., 12345678)
+   - `api_hash`: A string of alphanumeric characters (e.g., abcdef1234567890)
 
-> ⚠️ **重要提示**: 建议使用测试小号，避免主号被封风险
-> 💡 **提示**: 这些凭证会在步骤 4 中用到
+> ⚠️ **Important Note**: It is recommended to use a test account to avoid the risk of your main account being banned
+> 💡 **Tip**: These credentials will be used in step 4
 ```
 
-### 示例 2: 配置环境变量
+### Example 2: Configure Environment Variables
 
 ```markdown
-### 步骤 4: 配置环境变量
+### Step 4: Configure Environment Variables
 
-环境变量用于存储敏感信息和配置参数，避免硬编码到代码中。
+Environment variables are used to store sensitive information and configuration parameters, avoiding hardcoding them into the code.
 
 ```bash
-# 复制环境变量模板
+# Copy environment variable template
 cp apps/backend/.env.example apps/backend/.env
 
-# 编辑配置文件
-nano apps/backend/.env  # 或使用你喜欢的编辑器
+# Edit configuration file
+nano apps/backend/.env  # or use your preferred editor
 ```
 
-#### 必需配置项
+#### Required Configuration Items
 
-以下配置项必须填写，否则系统无法启动：
+The following configuration items must be filled in, otherwise the system cannot start:
 
 ```bash
 # ========================================
-# Telegram API 配置（步骤 2 获取）
+# Telegram API Configuration (obtained in step 2)
 # ========================================
-TELEGRAM_API_ID=12345678              # 替换为你的 api_id
-TELEGRAM_API_HASH=abcdef1234567890    # 替换为你的 api_hash
+TELEGRAM_API_ID=12345678              # Replace with your api_id
+TELEGRAM_API_HASH=abcdef1234567890    # Replace with your api_hash
 
 # ========================================
-# AI Provider 配置（步骤 3 获取）
+# AI Provider Configuration (obtained in step 3)
 # ========================================
-AI_PROVIDER=deepseek                  # 可选: mock | openai | deepseek | gemini
-AI_API_KEY=sk-xxxxxxxxxxxxx           # 替换为你的 API Key
+AI_PROVIDER=deepseek                  # Optional: mock | openai | deepseek | gemini
+AI_API_KEY=sk-xxxxxxxxxxxxx           # Replace with your API Key
 AI_API_BASE_URL=https://api.deepseek.com/v1
 AI_MODEL=deepseek-chat
 ```
 
-#### 可选配置项
+#### Optional Configuration Items
 
-以下配置项可以跳过，使用默认值：
+The following configuration items can be skipped and use default values:
 
 ```bash
 # ========================================
-# 服务器配置（可选）
+# Server Configuration (optional)
 # ========================================
-PORT=3000                             # 默认 3000
-NODE_ENV=development                  # 默认 development
+PORT=3000                             # Default 3000
+NODE_ENV=development                  # Default development
 ```
 
-> 💡 **提示**: 配置文件中的注释以 `#` 开头
-> ⚠️ **注意**: 不要将 `.env` 文件提交到 Git 仓库
+> 💡 **Tip**: Comments in the configuration file start with `#`
+> ⚠️ **Note**: Do not commit the `.env` file to the Git repository
 ```
 
-### 示例 3: 启动服务
+### Example 3: Start Services
 
 ```markdown
-### 步骤 6: 启动服务
+### Step 6: Start Services
 
-#### 方式 A: 同时启动前后端（推荐）
+#### Method A: Start Frontend and Backend Simultaneously (Recommended)
 
-适合日常开发使用，一条命令启动所有服务。
+Suitable for daily development use, start all services with one command.
 
 ```bash
-# 在项目根目录执行
+# Execute in the project root directory
 pnpm dev
 ```
 
-**预期输出**:
+**Expected Output**:
 ```
 > @omniknight/backend dev
 > Backend server running on http://localhost:3000
@@ -173,47 +173,47 @@ pnpm dev
 > Frontend server running on http://localhost:5173
 ```
 
-服务地址：
-- 后端 API: [http://localhost:3000](http://localhost:3000)
-- 前端 Dashboard: [http://localhost:5173](http://localhost:5173)
+Service addresses:
+- Backend API: [http://localhost:3000](http://localhost:3000)
+- Frontend Dashboard: [http://localhost:5173](http://localhost:5173)
 
-#### 方式 B: 分别启动（用于调试）
+#### Method B: Start Separately (for debugging)
 
-适合需要单独调试前端或后端的场景。
+Suitable for scenarios where you need to debug the frontend or backend separately.
 
-**终端 1 - 启动后端**:
+**Terminal 1 - Start Backend**:
 ```bash
 pnpm --filter @omniknight/backend dev
-# 后端运行在 http://localhost:3000
+# Backend running on http://localhost:3000
 ```
 
-**终端 2 - 启动前端**:
+**Terminal 2 - Start Frontend**:
 ```bash
 pnpm --filter @omniknight/web dev
-# 前端运行在 http://localhost:5173
+# Frontend running on http://localhost:5173
 ```
 
-> 💡 **提示**: 使用 `Ctrl+C` 停止服务
-> ⚠️ **注意**: 确保端口 3000 和 5173 没有被占用
+> 💡 **Tip**: Use `Ctrl+C` to stop services
+> ⚠️ **Note**: Make sure ports 3000 and 5173 are not in use
 ```
 
-### 示例 4: 验证系统运行
+### Example 4: Verify System Operation
 
 ```markdown
-### 步骤 8: 验证系统运行
+### Step 8: Verify System Operation
 
-通过以下测试确认系统正常运行。
+Confirm the system is running normally through the following tests.
 
-#### 测试 API 连接
+#### Test API Connection
 
 ```bash
-# 测试 1: 查看群组列表
+# Test 1: View group list
 curl http://localhost:3000/api/groups
 
-# 预期输出: JSON 格式的群组列表
-# {"success":true,"data":[{"id":1,"name":"测试群组",...}]}
+# Expected output: JSON format group list
+# {"success":true,"data":[{"id":1,"name":"Test Group",...}]}
 
-# 测试 2: 手动生成总结
+# Test 2: Manually generate summary
 curl -X POST http://localhost:3000/api/summaries/generate \
   -H "Content-Type: application/json" \
   -d '{
@@ -222,131 +222,131 @@ curl -X POST http://localhost:3000/api/summaries/generate \
     "periodEnd": "2025-01-30T23:59:59Z"
   }'
 
-# 预期输出: 返回任务ID
+# Expected output: Return job ID
 # {"success":true,"data":{"jobId":123}}
 ```
 
-#### 查看日志
+#### View Logs
 
-后端日志会实时输出到终端，关键日志包括：
+Backend logs will output to the terminal in real-time. Key logs include:
 
-- ✅ `Telegram 客户端连接成功` - Telegram 连接正常
-- 📡 `开始拉取消息` - 开始拉取群组消息
-- 🤖 `调用 AI 生成总结` - AI 服务调用成功
-- ✅ `总结生成完成` - 任务执行完成
+- ✅ `Telegram client connected successfully` - Telegram connection is normal
+- 📡 `Starting to fetch messages` - Starting to fetch group messages
+- 🤖 `Calling AI to generate summary` - AI service call successful
+- ✅ `Summary generation completed` - Task execution completed
 
-> 💡 **提示**: 如果看到错误日志，检查环境变量配置
-> ⚠️ **常见问题**: 如果 API 无响应，检查后端是否正常启动
+> 💡 **Tip**: If you see error logs, check the environment variable configuration
+> ⚠️ **Common Issue**: If the API is unresponsive, check if the backend started normally
 ```
 
 ---
 
-## 编写检查清单
+## Writing Checklist
 
-完成步骤编写后，使用以下检查清单验证质量：
+After completing the step writing, use the following checklist to verify quality:
 
-### 完整性检查
-- [ ] 每个步骤都有清晰的标题
-- [ ] 每个步骤都说明了目的
-- [ ] 提供了完整的命令或操作指令
-- [ ] 说明了预期的输出或结果
-- [ ] 包含了常见问题提示
+### Completeness Check
+- [ ] Each step has a clear title
+- [ ] Each step explains its purpose
+- [ ] Complete commands or operational instructions are provided
+- [ ] Expected output or results are explained
+- [ ] Common issue tips are included
 
-### 可操作性检查
-- [ ] 命令可以直接复制粘贴执行
-- [ ] 所有占位符都有明确说明（如 `your_api_key`）
-- [ ] 外部链接都是可访问的
-- [ ] 步骤顺序符合实际操作流程
+### Operability Check
+- [ ] Commands can be directly copied and pasted for execution
+- [ ] All placeholders are clearly explained (e.g., `your_api_key`)
+- [ ] All external links are accessible
+- [ ] Step order matches the actual operational flow
 
-### 用户友好性检查
-- [ ] 使用了清晰的图标（✅ ⚠️ 💡）
-- [ ] 提供了多种方案选择（如果适用）
-- [ ] 包含了故障排查提示
-- [ ] 语言简洁易懂，避免术语堆砌
+### User-Friendliness Check
+- [ ] Clear icons are used (✅ ⚠️ 💡)
+- [ ] Multiple solution options are provided (if applicable)
+- [ ] Troubleshooting tips are included
+- [ ] Language is concise and easy to understand, avoiding jargon
 
-### 格式规范检查
-- [ ] 使用了正确的 Markdown 语法
-- [ ] 代码块指定了语言类型
-- [ ] 链接格式正确
-- [ ] 层级结构清晰（使用 ###、####）
+### Format Compliance Check
+- [ ] Correct Markdown syntax is used
+- [ ] Code blocks specify language type
+- [ ] Link format is correct
+- [ ] Hierarchy structure is clear (using ###, ####)
 
 ---
 
-## 常见错误
+## Common Mistakes
 
-### ❌ 错误示例 1: 缺少上下文
+### ❌ Wrong Example 1: Missing Context
 
 ```markdown
-### 配置环境变量
+### Configure Environment Variables
 
-编辑 .env 文件。
+Edit the .env file.
 ```
 
-**问题**: 没有说明为什么要配置、如何编辑、配置什么内容。
+**Problem**: No explanation of why to configure, how to edit, or what to configure.
 
-### ✅ 正确示例 1
+### ✅ Correct Example 1
 
 ```markdown
-### 步骤 4: 配置环境变量
+### Step 4: Configure Environment Variables
 
-环境变量用于存储敏感信息和配置参数。
+Environment variables are used to store sensitive information and configuration parameters.
 
 ```bash
 cp apps/backend/.env.example apps/backend/.env
 nano apps/backend/.env
 ```
 
-编辑以下必需配置项：
-- `TELEGRAM_API_ID`: 步骤 2 获取的 api_id
-- `AI_API_KEY`: 步骤 3 获取的 API Key
+Edit the following required configuration items:
+- `TELEGRAM_API_ID`: The api_id obtained in step 2
+- `AI_API_KEY`: The API Key obtained in step 3
 ```
 
 ---
 
-### ❌ 错误示例 2: 命令不完整
+### ❌ Wrong Example 2: Incomplete Commands
 
 ```markdown
-运行 npm install 安装依赖。
+Run npm install to install dependencies.
 ```
 
-**问题**: 没有提供完整的代码块，用户无法直接复制。
+**Problem**: No complete code block provided, users cannot copy directly.
 
-### ✅ 正确示例 2
+### ✅ Correct Example 2
 
 ```markdown
-### 步骤 1: 安装依赖
+### Step 1: Install Dependencies
 
 ```bash
-# 使用 pnpm 安装项目依赖
+# Use pnpm to install project dependencies
 pnpm install
 ```
 
-**预期输出**: 依赖安装进度条，最后显示 "Done in Xs"
+**Expected Output**: Dependency installation progress bar, finally showing "Done in Xs"
 ```
 
 ---
 
-### ❌ 错误示例 3: 缺少验证步骤
+### ❌ Wrong Example 3: Missing Verification Steps
 
 ```markdown
-启动服务后，访问 http://localhost:3000
+After starting the service, visit http://localhost:3000
 ```
 
-**问题**: 没有说明如何验证服务是否正常运行。
+**Problem**: No explanation of how to verify if the service is running normally.
 
-### ✅ 正确示例 3
+### ✅ Correct Example 3
 
 ```markdown
-### 步骤 6: 启动服务
+### Step 6: Start Services
 
 ```bash
 pnpm dev
 ```
 
-**验证服务运行**:
-1. 访问 [http://localhost:3000/api/health](http://localhost:3000/api/health)
-2. 应该看到 `{"status":"ok"}`
-3. 如果看到错误，检查端口是否被占用
+**Verify Service Operation**:
+1. Visit [http://localhost:3000/api/health](http://localhost:3000/api/health)
+2. You should see `{"status":"ok"}`
+3. If you see an error, check if the port is in use
 
-> 💡 **提示**: 使用 `lsof -i :3000` 检查端口占用
+> 💡 **Tip**: Use `lsof -i :3000` to check port usage
 ```
